@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data and Time Js</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="main">
+        <h5 style="color: azure;font-size:3rem;border-bottom: 3px solid white;margin: 20px;">Date And Time</h5>
+
+        <div class="date"> Date :
+            <span id="date">00 </span>/
+            <span id="month"> 00 </span>/
+            <span id="year"> 00</span>
+            <div class="times"> Time :
+                <span id="hour">00 </span>:
+                <span id="minute">00 </span>:
+                <span id="second">00 </span>
+                <span id="ampm">pm</span>
+            </div>
+        </div>
+        <script>
+            function update() {
+                let hour = document.getElementById("hour");
+                let minute = document.getElementById("minute");
+                let second = document.getElementById("second");
+                let date = document.getElementById("date");
+                let month = document.getElementById("month");
+                let year = document.getElementById("year");
+                let ampm = document.getElementById("ampm");
+
+                let h = new Date().getHours();
+                let m = new Date().getMinutes();
+                let s = new Date().getSeconds();
+                let d = new Date().getDate();
+                let y = new Date().getFullYear();
+                let mo = new Date().getMonth();
+
+                let pm = h >= 12 ? "PM" : "AM";
+                hour.innerHTML = h;
+                minute.innerHTML = m;
+                second.innerHTML = s;
+                date.innerHTML = d;
+                year.innerHTML = y;
+                ampm.innerHTML = pm;
+                month.innerHTML = mo;
+
+                if (h >= 12) {
+                    h = h - 12;
+                }
+                
+                h = (h < 10) ? "0" + h : h
+                m = (m < 10) ? "0" + m : m
+                s = (s < 10) ? "0" + s : s
+                d = (d < 10) ? "0" + d : d
+                y = (y < 10) ? "0" + y : y
+                mo = (mo < 10) ? "0" + mo : mo
+                    
+            };
+            update();
+
+            setInterval(update, 1000);
+        </script>
+</body>
+
+</html>
